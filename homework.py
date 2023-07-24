@@ -150,8 +150,7 @@ def read_package(workout_type: str, data: list) -> Training:
                                       'WLK': SportsWalking}
     if workout_type in trainings:
         return trainings[workout_type](*data)
-    else:
-        raise ValueError('Такой тренировки нет.')
+    raise ValueError('Такой тренировки нет.')
 
 
 def main(training: Training) -> None:
