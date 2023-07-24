@@ -10,7 +10,7 @@ class InfoMessage:
     speed: float
     calories: float
 
-    def get_message(self):
+    def get_message(self) -> str:
         """Функция получения сообщения:
         функция вызывается, как метод к переменной info,
         чтобы вывести данное сообщение с указанием лишь трех
@@ -74,7 +74,7 @@ class Running(Training):
                  ) -> None:
         super().__init__(action, duration, weight)
 
-    def get_spent_calories(self):
+    def get_spent_calories(self) -> float:
         """Спецификация функции базового класса
         для получения количества затраченных калорий на тренировку."""
         return ((self.CALORIES_MEAN_SPEED_MULTIPLIER
@@ -101,7 +101,7 @@ class SportsWalking(Training):
         super().__init__(action, duration, weight)
         self.height = height
 
-    def get_spent_calories(self):
+    def get_spent_calories(self) -> float:
         """Спецификация функции базового класса
         для получения количества затраченных калорий на тренировку."""
         return ((self.WEIGHT_MULTIPLIER_1 * self.weight
@@ -135,7 +135,7 @@ class Swimming(Training):
         return (self.length_pool * self.count_pool
                 / self.M_IN_KM / (self.duration))
 
-    def get_spent_calories(self):
+    def get_spent_calories(self) -> float:
         """Спецификация функции базового класса
         для получения количества затраченных калорий на тренировку."""
         return ((self.get_mean_speed() + self.AVERAGE_SPEED_SHIFT)
