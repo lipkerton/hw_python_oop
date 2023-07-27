@@ -82,7 +82,7 @@ class SportsWalking(Training):
     WEIGHT_MULTIPLIER_1: float = 0.035
     WEIGHT_MULTIPLIER_2: float = 0.029
     KMH_IN_MS: float = 0.278
-    M_IN_S: int = 100
+    CM_IN_M: int = 100
 
     def __init__(self,
                  action: int,
@@ -98,7 +98,7 @@ class SportsWalking(Training):
         для получения количества затраченных калорий на тренировку."""
         return ((self.WEIGHT_MULTIPLIER_1 * self.weight
                  + ((super().get_mean_speed() * self.KMH_IN_MS)**2
-                    / (self.height / self.M_IN_S))
+                    / (self.height / self.CM_IN_M))
                  * self.WEIGHT_MULTIPLIER_2 * self.weight)
                 * (self.duration * self.HOURS_IN_MIN))
 
@@ -132,7 +132,7 @@ class Swimming(Training):
         для получения количества затраченных калорий на тренировку."""
         return ((self.get_mean_speed() + self.AVERAGE_SPEED_SHIFT)
                 * self.SPEED_MULTIPLIER
-                * self.weight * (self.duration))
+                * self.weight * self.duration)
 
 
 def read_package(workout_type: str, data: list) -> Training:
